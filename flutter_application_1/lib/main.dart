@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:flutter_application_1/pages/login_page.dart';
-import 'package:flutter_application_1/pages/register_page.dart';
+import 'package:flutter_application_1/pages/splash_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -25,7 +24,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const LoginPage(),
+      home: const SplashPage(),
     );
   }
 }

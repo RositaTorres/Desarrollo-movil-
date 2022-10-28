@@ -1,4 +1,4 @@
-import 'dart:ffi';
+// ignore_for_file: unused_field, non_constant_identifier_names
 
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -6,7 +6,6 @@ import 'package:flutter_application_1/models/user.dart';
 import 'package:flutter_application_1/pages/login_page.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:convert';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({Key? key}) : super(key: key);
@@ -23,7 +22,7 @@ class _RegisterPageState extends State<RegisterPage> {
   final _password = TextEditingController();
   final _repassword = TextEditingController();
 
-  String _data = "Información: ";
+  final _data = "Información: ";
   Genre? _genre = Genre.masculino;
 
   bool _gastronomia = false;
@@ -90,8 +89,8 @@ class _RegisterPageState extends State<RegisterPage> {
         var user = User(
             _name.text, _email.text, _password.text, genre, _date, favoritos);
         saveUser(user);
-        Navigator.pushReplacement(
-            context, MaterialPageRoute(builder: (context) => LoginPage()));
+        Navigator.pushReplacement(context,
+            MaterialPageRoute(builder: (context) => const LoginPage()));
       } else {
         _showMsg("Las contraseñas no coinciden");
       }

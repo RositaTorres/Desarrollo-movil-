@@ -1,3 +1,5 @@
+// ignore_for_file: unused_element
+
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/models/user.dart';
 import 'package:flutter_application_1/pages/info_general.dart';
@@ -18,6 +20,7 @@ class _LoginPageState extends State<LoginPage> {
 
   User userLoad = User.Empty();
 
+  @override
   void initState() {
     _getUser();
     super.initState();

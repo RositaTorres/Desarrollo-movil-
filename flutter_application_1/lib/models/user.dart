@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 class User {
   var _name;
   var _email;

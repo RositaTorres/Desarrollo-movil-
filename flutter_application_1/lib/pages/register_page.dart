@@ -6,7 +6,6 @@ import 'package:flutter_application_1/models/user.dart';
 import 'package:flutter_application_1/pages/login_page.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:convert';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({Key? key}) : super(key: key);

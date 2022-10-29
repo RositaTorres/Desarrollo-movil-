@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/models/user.dart';
-import 'package:flutter_application_1/pages/info_general.dart';
+import 'package:flutter_application_1/pages/pages_POI/info_general.dart';
 import 'package:flutter_application_1/pages/register_page.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:convert';

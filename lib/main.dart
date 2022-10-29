@@ -1,18 +1,30 @@
+// Imports
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/src/routes/routes.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:flutter_application_1/pages/splash_page.dart';
 
+
+// There's running the application
 void main() {
   runApp(const MyApp());
 }
 
+// App widget 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      // There's deactivating the debug banner
+      debugShowCheckedModeBanner: false,
+      
+      // Application properties
       title: 'Destino Colombia',
+      initialRoute: '/',
+      routes: getRoutes(),
+      
+      // Language settings
       localizationsDelegates: const [
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
@@ -21,10 +33,12 @@ class MyApp extends StatelessWidget {
         Locale("en", "US"),
         Locale("es", "CO"),
       ],
+
+      // Style properties
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const SplashPage(),
+
     );
   }
 }

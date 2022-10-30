@@ -1,5 +1,6 @@
 // Imports
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/src/styles/buttons_style.dart';
 import '../models/user_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:convert';
@@ -28,23 +29,22 @@ class _LoginPageState extends State<LoginPage> {
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
         child: Center(
-          child: ListView(
+          child: SingleChildScrollView(
+            child: Column(
               children: <Widget>[
                 // There's rendering the logo
                 const Image(image: AssetImage('assets/images/logo.png')),
 
                 // Email and password inputs
                 const SizedBox(height: 16.0),
-                _createFormTextField(_email, 'Correo electrónico', false),
+                _createFormTextField(_email, 'Correo electrónico', 'ejemplo@email.com', false, Icons.alternate_email_outlined),
                 const SizedBox(height: 16.0),
-                _createFormTextField(_password, 'Contraseña', true),
+                _createFormTextField(_password, 'Contraseña', '*******', true, Icons.stream_outlined),
                 const SizedBox(height: 16.0),
 
                 // Login button
                 ElevatedButton(
-                  style: TextButton.styleFrom(
-                    textStyle: const TextStyle(fontSize: 16),
-                  ),
+                  style: getTextButtonPrimaryStyle(),
                   onPressed: _validateUser,
                   child: const Text('Iniciar Sesión'),
                 ),
@@ -60,7 +60,8 @@ class _LoginPageState extends State<LoginPage> {
                   child: const Text('Registrarse'),
                 ),
               ],
-            ),
+            )
+          )
         ),
       ),
     );
@@ -75,11 +76,16 @@ class _LoginPageState extends State<LoginPage> {
 
   // This method returns a form text field
   Widget _createFormTextField(
-      TextEditingController controller, String label, bool obscured) {
+      TextEditingController controller, String label, String hintText, bool obscured, IconData icon) {
     return TextFormField(
       controller: controller,
       decoration:
-          InputDecoration(border: const OutlineInputBorder(), labelText: label),
+          InputDecoration(
+            icon: Icon(icon),
+            border: OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
+            labelText: label,
+            hintText: hintText
+          ),
       keyboardType: TextInputType.text,
       obscureText: obscured,
     );

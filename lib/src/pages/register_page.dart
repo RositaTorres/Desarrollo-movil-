@@ -1,5 +1,6 @@
 // Imports
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/src/styles/buttons_style.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../models/user_model.dart';
 import 'dart:convert';
@@ -13,7 +14,7 @@ class RegisterPage extends StatefulWidget {
 }
 
 // This enum has the valid genders for the app
-enum Gender { male, femme }
+enum Gender { male, femme, noBinary}
 
 // Register state
 class RegisterPageState extends State<RegisterPage> {
@@ -39,35 +40,69 @@ class RegisterPageState extends State<RegisterPage> {
       body: Padding(
         padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 8),
         child: Center(
-          child: ListView(
+          child: SingleChildScrollView(
+            child: Column(
             children: <Widget>[
               // There's rendering the logo
               const Image(image: AssetImage('assets/images/logo.png')),
-              const Divider(),
 
               // There's the input text fields
               const SizedBox(height: 16),
-              _createInputTextField('Nombre', TextInputType.text, false, _name),
+              _createInputTextField(_name, 'Nombre', 'Pepita Pérez', TextInputType.text, false, Icons.account_circle),
               const SizedBox(height: 16),
-              _createInputTextField('Correo electrónico',
-                  TextInputType.emailAddress, false, _email),
+              _createInputTextField(_email, 'Correo electrónico', 'ejemplo@email.com',
+                  TextInputType.emailAddress, false, Icons.alternate_email_outlined),
               const SizedBox(height: 16),
-              _createInputTextField(
-                  'Contraseña', TextInputType.text, true, _password),
+              _createInputTextField(_password, 
+                  'Contraseña', '******', TextInputType.text, true, Icons.stream_sharp),
               const SizedBox(height: 16),
-              _createInputTextField('Repertir contraseña', TextInputType.text,
-                  true, _repeatPassword),
+              _createInputTextField(_repeatPassword, 'Repertir contraseña', '******',TextInputType.text,
+                  true, Icons.stream_sharp),
               const SizedBox(height: 16),
+              // Date input field
+              TextFormField(
+                controller: _date,
+                decoration: InputDecoration(
+                  label: const Text('Fecha de nacimiento'),
+                  border: OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
+                  icon: const Icon(Icons.calendar_month_sharp),
+                  hintText: 'AAAA-MM-DD'
+                ),
+                keyboardType: TextInputType.text,
+                onTap: (() {
+                  FocusScope.of(context).requestFocus(FocusNode());
+                  _useDatePicker();
+                }),
+              ),
+              const SizedBox(height: 32),
+              const Divider(),
 
               // Sex select radios
-              const Text("Sexo:", textAlign: TextAlign.center),
+              const SizedBox(height: 32),
+              const Text(
+                "Sexo:",
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 16,
+                  fontStyle: FontStyle.italic
+                )
+              ),
               _createRadio('Femenino', Gender.femme),
               _createRadio('Masculino', Gender.male),
-              const SizedBox(height: 16),
+              _createRadio('No binario', Gender.noBinary),
+              const SizedBox(height: 32),
+              const Divider(),
 
               // Activities checkboxes
-              const Text("¿Por qué te gusta viajar?",
-                  textAlign: TextAlign.center),
+              const SizedBox(height: 32),
+              const Text(
+                "¿Por qué te gusta viajar?",
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 16,
+                  fontStyle: FontStyle.italic
+                )
+              ),
               CheckboxListTile(
                   title: const Text('Aventuras extremas'),
                   value: _extremeAdventures,
@@ -88,53 +123,49 @@ class RegisterPageState extends State<RegisterPage> {
                   value: _gastronomy,
                   onChanged: (bool? selected) =>
                       setState(() => _gastronomy = selected!)),
-              const SizedBox(height: 16),
-
-              // Date input field
-              TextFormField(
-                controller: _date,
-                decoration: const InputDecoration(
-                    label: Text('Fecha'), border: OutlineInputBorder()),
-                keyboardType: TextInputType.text,
-                onTap: (() {
-                  FocusScope.of(context).requestFocus(FocusNode());
-                  _useDatePicker();
-                }),
-              ),
-              const SizedBox(height: 16),
+              const SizedBox(height: 32),
+              const Divider(),
 
               // Register and login button
+              const SizedBox(height: 32),
               ElevatedButton(
                   onPressed: _onCLickRegister,
+                  style: getTextButtonPrimaryStyle(),
                   child:
-                      const Text('Registro', style: TextStyle(fontSize: 12))),
+                      const Text('Registro')),
               TextButton(
                 child: const Text('Iniciar sesión',
                     style: TextStyle(
-                        color: Colors.blue,
                         fontStyle: FontStyle.italic,
                         fontSize: 16)),
                 onPressed: () => Navigator.pushNamed(context, 'login'),
               ),
-              const SizedBox(height: 16)
+              const SizedBox(height: 32)
             ],
           ),
+          )
         ),
       ),
     );
   }
 
   // This method returns an input text field
-  Widget _createInputTextField(String title, TextInputType textInputType,
-      bool obscured, TextEditingController controller) {
+ Widget _createInputTextField(
+      TextEditingController controller, String label, String hintText, TextInputType textInputType, bool obscured, IconData icon) {
     return TextFormField(
       controller: controller,
-      decoration: InputDecoration(
-          label: Text(title), border: const OutlineInputBorder()),
+      decoration:
+          InputDecoration(
+            icon: Icon(icon),
+            border: OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
+            labelText: label,
+            hintText: hintText
+          ),
       keyboardType: textInputType,
       obscureText: obscured,
     );
   }
+
 
   // This method returns an radio button
   Widget _createRadio(String title, Gender value) {
@@ -194,7 +225,17 @@ class RegisterPageState extends State<RegisterPage> {
       return;
     }
 
-    String gender = (_gender == Gender.male) ? 'Masculino' : 'Femenino';
+    String gender;
+    if(_gender == Gender.femme){
+      gender = 'Masculino';
+    }
+    else if(_gender == Gender.male){
+      gender = 'Femenino';
+    }
+    else{
+      gender = 'No binario';
+    }
+    
     String genderBooks = '';
 
     if (_extremeAdventures) genderBooks += 'Aventuras extremas';

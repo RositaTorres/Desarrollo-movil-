@@ -36,7 +36,8 @@ class MyApp extends StatelessWidget {
 
       // Style properties
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.purple,
+        scaffoldBackgroundColor: Colors.white,
       ),
 
     );

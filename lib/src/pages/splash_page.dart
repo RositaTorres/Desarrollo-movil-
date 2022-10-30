@@ -1,6 +1,7 @@
+// Imports
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/pages/login_page.dart';
 
+// Splash widget (This widget has a variable state)
 class SplashPage extends StatefulWidget {
   const SplashPage({Key? key}) : super(key: key);
 
@@ -8,6 +9,7 @@ class SplashPage extends StatefulWidget {
   State<SplashPage> createState() => _SplashPageState();
 }
 
+// Splash state
 class _SplashPageState extends State<SplashPage> {
   @override
   void initState() {
@@ -15,10 +17,10 @@ class _SplashPageState extends State<SplashPage> {
     super.initState();
   }
 
+  // There's finalizing the splash render and then, it's redirecting to the login
   Future<void> _closeSplash() async {
     Future.delayed(const Duration(seconds: 2), () async {
-      Navigator.pushReplacement(
-          context, MaterialPageRoute(builder: (context) => const LoginPage()));
+      Navigator.pushReplacementNamed(context, 'login');
     });
   }
 
@@ -26,7 +28,7 @@ class _SplashPageState extends State<SplashPage> {
   Widget build(BuildContext context) {
     return const Scaffold(
       body: Center(
-        child: Image(image: AssetImage('assets/images/Logo.png')),
+        child: Image(image: AssetImage('assets/images/logo.png')),
       ),
     );
   }

@@ -44,4 +44,4 @@ app.*.map.json
 /android/app/release
 
 # Developers settings
-./token.txt
+/token.txt

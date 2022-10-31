@@ -1,11 +1,8 @@
-// ignore_for_file: unused_field, non_constant_identifier_names
-
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/repository/firebase_api.dart';
 import 'package:intl/intl.dart';
 import 'package:flutter_application_1/models/user.dart';
 import 'package:flutter_application_1/pages/login_page.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'dart:convert';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({Key? key}) : super(key: key);
@@ -17,6 +14,8 @@ class RegisterPage extends StatefulWidget {
 enum Genre { masculino, femenino }
 
 class _RegisterPageState extends State<RegisterPage> {
+  final FirebaseApi _firebaseApi = FirebaseApi();
+
   final _name = TextEditingController();
   final _email = TextEditingController();
   final _password = TextEditingController();
@@ -58,19 +57,41 @@ class _RegisterPageState extends State<RegisterPage> {
   }
 
   void _showMsg(String msg) {
-    final Scaffold = ScaffoldMessenger.of(context);
-    Scaffold.showSnackBar(
+    final scaffold = ScaffoldMessenger.of(context);
+    scaffold.showSnackBar(
       SnackBar(
         content: Text(msg),
         action: SnackBarAction(
-            label: 'Aceptar', onPressed: Scaffold.hideCurrentSnackBar),
+            label: 'Aceptar', onPressed: scaffold.hideCurrentSnackBar),
       ),
     );
   }
 
-  void saveUser(User user) async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    prefs.setString("user", jsonEncode(user));
+  void _saveUser(User user) async {
+    var result = await _firebaseApi.createUser(user);
+    Navigator.pushReplacement(
+        context, MaterialPageRoute(builder: (context) => const LoginPage()));
+  }
+
+  void _registerUser(User user) async {
+    //SharedPreferences prefs = await SharedPreferences.getInstance();
+    //prefs.setString("user", jsonEncode(user));
+    var result = await _firebaseApi.registerUser(user.email, user.password);
+    String msg = "";
+    if (result == "invalid-email") {
+      msg = "El correo electrónico está mal escrito";
+    } else if (result == "weak-password") {
+      msg = "La contraseña debe tener minimo 6 digitos";
+    } else if (result == "email-already-in-use") {
+      msg = "Ya existe una cuenta con este correo electrónico";
+    } else if (result == "network-request-failed") {
+      msg = "Revise la conexion a internet";
+    } else {
+      msg = "Usuario registrado con exito";
+      user.uid = result;
+      _saveUser(user);
+    }
+    _showMsg(msg);
   }
 
   void _onRegisterButtonClicked() {
@@ -86,11 +107,9 @@ class _RegisterPageState extends State<RegisterPage> {
         if (_cultura) favoritos = "$favoritos Cultura";
         if (_aventurasExtremas) favoritos = "$favoritos Aventuras Extremas";
         if (_descanso) favoritos = "$favoritos Descanso";
-        var user = User(
-            _name.text, _email.text, _password.text, genre, _date, favoritos);
-        saveUser(user);
-        Navigator.pushReplacement(context,
-            MaterialPageRoute(builder: (context) => const LoginPage()));
+        var user = User("", _name.text, _email.text, _password.text, genre,
+            _date, favoritos);
+        _registerUser(user);
       } else {
         _showMsg("Las contraseñas no coinciden");
       }

@@ -16,7 +16,7 @@ import '../models/user_model.dart';
 import 'package:flutter_application_1/repository/firebase_api.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:convert';
-import 'home_page.dart';
+import 'list_page.dart';
 
 // Login widget (This widget has a variable state)
 class LoginPage extends StatefulWidget {
@@ -34,6 +34,14 @@ class _LoginPageState extends State<LoginPage> {
 
   // User information
   User userLoad = User.empty();
+
+  final FirebaseApi _firebaseApi = FirebaseApi();
+
+  @override
+  void initState() {
+    // _getUser();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -77,14 +85,6 @@ class _LoginPageState extends State<LoginPage> {
         ))),
       ),
     );
-  }
-
-  final FirebaseApi _firebaseApi = FirebaseApi();
-
-  @override
-  void initState() {
-    // _getUser();
-    super.initState();
   }
 
   // This method returns a form text field
@@ -132,7 +132,7 @@ class _LoginPageState extends State<LoginPage> {
       String msg = "";
       if (result == "invalid-email") {
         msg = "El correo electrónico está mal escrito";
-      } else if (result == "weak-password") {
+      } else if (result == "wrong-password") {
         msg = "Correo o contraseña incorrecta";
       } else if (result == "network-request-failed") {
         msg = "Revise la conexion a internet";
@@ -142,7 +142,7 @@ class _LoginPageState extends State<LoginPage> {
       _showMsg("Correo o contraseña incorrecto");
       // ignore: use_build_context_synchronously
       Navigator.pushReplacement(
-          context, MaterialPageRoute(builder: (context) => const HomePage()));
+          context, MaterialPageRoute(builder: (context) => const ListPage()));
     }
   }
 }

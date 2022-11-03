@@ -35,7 +35,6 @@ class _LoginPageState extends State<LoginPage> {
   // User information
   User userLoad = User.empty();
 
-<<<<<<< HEAD
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -79,9 +78,8 @@ class _LoginPageState extends State<LoginPage> {
       ),
     );
   }
-=======
+
   final FirebaseApi _firebaseApi = FirebaseApi();
->>>>>>> 9efffb224313ee906361e6d70f4c275fd616b940
 
   @override
   void initState() {
@@ -89,7 +87,6 @@ class _LoginPageState extends State<LoginPage> {
     super.initState();
   }
 
-<<<<<<< HEAD
   // This method returns a form text field
   Widget _createFormTextField(TextEditingController controller, String label,
       String hintText, bool obscured, IconData icon) {
@@ -105,8 +102,6 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
-=======
->>>>>>> 9efffb224313ee906361e6d70f4c275fd616b940
   // This method loads the user information
   _getUser() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -114,21 +109,10 @@ class _LoginPageState extends State<LoginPage> {
     userLoad = User.fromJson(userMap);
   }
 
-<<<<<<< HEAD
   // This method validates the user information a might redirect the user
-  void _validateUser() {
-    if (_email.text != userLoad.getEmail ||
-        _password.text != userLoad.getPassword) {
-      _showMsg("Correo o Contraseña incorrecta");
-      return;
-    }
-    // Navigator.pushReplacement(context,
-    //     MaterialPageRoute(builder: (context) => const InfoGeneral()));
-  }
 
   // This method show a message in the bottom screen
-=======
->>>>>>> 9efffb224313ee906361e6d70f4c275fd616b940
+
   void _showMsg(String msg) {
     final scaffold = ScaffoldMessenger.of(context);
     scaffold.showSnackBar(
@@ -160,64 +144,5 @@ class _LoginPageState extends State<LoginPage> {
       Navigator.pushReplacement(
           context, MaterialPageRoute(builder: (context) => const HomePage()));
     }
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
-        child: Center(
-            child: SingleChildScrollView(
-                child: Column(
-          children: <Widget>[
-            // There's rendering the logo
-            const Image(image: AssetImage('assets/images/logo.png')),
-
-            // Email and password inputs
-            const SizedBox(height: 16.0),
-            _createFormTextField(_email, 'Correo electrónico',
-                'ejemplo@email.com', false, Icons.alternate_email_outlined),
-            const SizedBox(height: 16.0),
-            _createFormTextField(_password, 'Contraseña', '*******', true,
-                Icons.stream_outlined),
-            const SizedBox(height: 16.0),
-
-            // Login button
-            ElevatedButton(
-              style: getTextButtonPrimaryStyle(),
-              onPressed: _validateUser,
-              child: const Text('Iniciar Sesión'),
-            ),
-
-            // Register redirect button
-            TextButton(
-              style: TextButton.styleFrom(
-                  textStyle: const TextStyle(
-                      fontSize: 16,
-                      fontStyle: FontStyle.italic,
-                      color: Colors.blue)),
-              onPressed: () => Navigator.pushNamed(context, 'register'),
-              child: const Text('Registrarse'),
-            ),
-          ],
-        ))),
-      ),
-    );
-  }
-
-  // This method returns a form text field
-  Widget _createFormTextField(TextEditingController controller, String label,
-      String hintText, bool obscured, IconData icon) {
-    return TextFormField(
-      controller: controller,
-      decoration: InputDecoration(
-          icon: Icon(icon),
-          border: OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
-          labelText: label,
-          hintText: hintText),
-      keyboardType: TextInputType.text,
-      obscureText: obscured,
-    );
   }
 }

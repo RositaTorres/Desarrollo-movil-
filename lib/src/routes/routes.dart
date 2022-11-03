@@ -13,7 +13,7 @@ import 'package:flutter_application_1/src/pages/pages_POI/info_general_6.dart';
 import 'package:flutter_application_1/src/pages/pages_POI/info_general_7.dart';
 import 'package:flutter_application_1/src/pages/pages_POI/info_general_8.dart';
 import 'package:flutter_application_1/src/pages/pages_POI/info_general_9.dart';
-<<<<<<< HEAD
+
 
 
 // This function returns a map with the routes and pages
@@ -34,21 +34,3 @@ Map<String, WidgetBuilder> getRoutes() => {
   'InfoGeneral9': (context) => const InfoGeneral9(),
 
 };
-=======
-
-// This function returns a map with the routes and pages
-Map<String, WidgetBuilder> getRoutes() => {
-      '/': (context) => const SplashPage(),
-      'login': (context) => const LoginPage(),
-      'register': (context) => const RegisterPage(),
-      'InfoGeneral1': (context) => const InfoGeneral(),
-      'InfoGeneral2': (context) => const InfoGeneral2(),
-      'InfoGeneral3': (context) => const InfoGeneral3(),
-      'InfoGeneral4': (context) => const InfoGeneral4(),
-      'InfoGeneral5': (context) => const InfoGeneral5(),
-      'InfoGeneral6': (context) => const InfoGeneral6(),
-      'InfoGeneral7': (context) => const InfoGeneral7(),
-      'InfoGeneral8': (context) => const InfoGeneral8(),
-      'InfoGeneral9': (context) => const InfoGeneral9(),
-    };
->>>>>>> 9efffb224313ee906361e6d70f4c275fd616b940

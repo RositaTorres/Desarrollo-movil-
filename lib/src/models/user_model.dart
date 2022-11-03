@@ -1,49 +1,74 @@
+// ignore_for_file: prefer_typing_uninitialized_variables, unnecessary_getters_setters
+
 class User {
   // Properties
-  String _name = '';
-  String _email = '';
-  String _password = '';
-  String _gender = '';
-  String _birthDate = '';
-  String _favorites = '';
+  var _uid;
+  var _name;
+  var _email;
+  var _password;
+  var _genre;
+  var _favoritesGenres;
+  var _bornDate;
 
   // Constructors
-  User(this._name, this._email, this._password, this._gender, this._birthDate,
-      this._favorites);
+  User(this._uid, this._name, this._email, this._password, this._genre,
+      this._bornDate, this._favoritesGenres);
 
   User.empty();
 
   User.fromJson(Map<String, dynamic> json)
-      : _name = json['name'],
+      : _uid = json['uid'],
+        _name = json['name'],
         _email = json['email'],
         _password = json['password'],
-        _gender = json['gender'],
-        _birthDate = json['birthDate'],
-        _favorites = json['favorites'];
+        _genre = json['genre'],
+        _bornDate = json['bornDate'],
+        _favoritesGenres = json['favoritesGenres'];
 
   // Methods
   Map<String, String> toJson() => {
-    'name': _name,
-    'email': _email,
-    'password': _password,
-    'gender': _gender,
-    'birthDate': _birthDate,
-    'favorites': _favorites
-  };
+        'uid': _uid,
+        'name': _name,
+        'email': _email,
+        'password': _password,
+        'genre': _genre,
+        'bornDate': _bornDate,
+        'favoritesGenres': _favoritesGenres
+      };
 
-  // Getters
-  get getName => _name;
-  get getEmail => _email;
-  get getPassword => _password;
-  get getGender => _gender;
-  get getBirthDate => _birthDate;
-  get getFavorites => _favorites;
+  // Getters and Setters
+  get uid => _uid;
+  set uid(value) {
+    _uid = value;
+  }
 
-  //Setters
-  set setName(String name) => _name = name;
-  set setEmail(String email) => _email = email;
-  set setPassword(String password) => _password = password;
-  set setGender(String gender) => _gender = gender;
-  set setBirthDate(String birthDate) => _birthDate = birthDate;
-  set setFavorites(String favorites) => _favorites = favorites;
+  get name => _name;
+  set mane(value) {
+    _name = value;
+  }
+
+  get email => _email;
+  set email(value) {
+    _email = value;
+  }
+
+  get password => _password;
+  set password(value) {
+    _password = value;
+  }
+
+  get genre => _genre;
+  set genre(value) {
+    _genre = value;
+  }
+
+  get bornDate => _bornDate;
+  set bornDate(value) {
+    _bornDate = value;
+  }
+
+  get favoritesGenres => _favoritesGenres;
+  set favoritesGenres(value) {
+    _favoritesGenres = value;
+  }
 }

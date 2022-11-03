@@ -12,27 +12,25 @@ class _InfoGeneralState extends State<InfoGeneral> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 40),
-        child: Center(
-            child: SingleChildScrollView(
-                child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: const <Widget>[
-            Text(
-              'Parque Nacional del Chicamocha - PANACHI',
-              style: TextStyle(fontSize: 30, fontStyle: FontStyle.italic),
-              textAlign: TextAlign.center,
-            ),
-            SizedBox(height: 30.0),
-            Image(image: AssetImage('assets/images/img_parque.jpg')),
-            SizedBox(height: 45.0),
-            Text(
-              'Ciudad cercana: Aratoca \nDepartamento: Santander \nTemperatura: entre 22 °C y 25 °C \n\nEl Parque Nacional del Chicamocha, consolidado como uno de los lugares turísticos más importantes de Colombia, ubicado en el lugar más imponente de Santander, el Cañón del Chicamocha. Es un majestuoso lugar en perfecta armonía con la naturaleza. Ubicado en jurisdicción del municipio de Aratoca, en la vía que comunica a Bucaramanga con San Gil a una distancia aproximada de 50 minutos, es un verdadero atractivo turístico; y lo es, porque encontrar en un mismo lugar ecoturismo, deportes extremos, diversión, turismo recreativo, gastronomía, y toda la cultura santandereana, sus raíces y su historia, sólo es posible en este sitio, creado para el disfrute de todas las familias de la región, del país y de todos los visitantes extranjeros.',
-              style: TextStyle(fontSize: 17, fontStyle: FontStyle.normal),
-            ),
-          ],
-        ))),
-      ),
+          padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 60),
+          child: SingleChildScrollView(
+              child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: const <Widget>[
+              Text(
+                'Parque Nacional del Chicamocha - Panachi',
+                style: TextStyle(fontSize: 35, fontStyle: FontStyle.italic),
+                textAlign: TextAlign.center,
+              ),
+              SizedBox(height: 30.0),
+              Image(image: AssetImage('assets/images/chicamocha.jpg')),
+              SizedBox(height: 45.0),
+              Text(
+                'Ubicación: Aratoca - Santander \nCoordenadas: 6°47′23″N 73°00′14″O \nTemperatura: Alta 24º C, Baja 15º C, Promedio 22º C \n\nEs un parque temático dedicado al ecoturismo a tan solo 54 km de Bucaramanga y a 39 km de San Gil. Se ubica sobre el Cañón de Chicamocha y está rodeado de hermosos paisajes naturales. En un mismo lugar se pueden encontrar deportes de aventura, turismo recreativo, ecoturismo, gastronomía típica, cultura santandereana, sus raíces y gran riqueza histórica. Cuenta con variedad de atracciones como teleférico, tirolin, pista de patinaje, pista para buggies, jumping, parque de las avestruces, parque de las cabras, monumento a la santandereanidad, mirador, pueblito santandereano, parapente y canotaje.',
+                style: TextStyle(fontSize: 17, fontStyle: FontStyle.normal),
+              ),
+            ],
+          ))),
     );
   }
 }

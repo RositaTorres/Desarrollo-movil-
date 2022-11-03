@@ -1,0 +1,39 @@
+{
+    "project_info": {
+      "project_number": "701544173838",
+      "project_id": "destinocolombia-9be1d",
+      "storage_bucket": "destinocolombia-9be1d.appspot.com"
+    },
+    "client": [
+      {
+        "client_info": {
+          "mobilesdk_app_id": "1:701544173838:android:626667be6d29f4d428c75f",
+          "android_client_info": {
+            "package_name": "com.example.flutter_application_1"
+          }
+        },
+        "oauth_client": [
+          {
+            "client_id": "701544173838-hhqdctk26p0tt1eeog5unm25ep0f2ia2.apps.googleusercontent.com",
+            "client_type": 3
+          }
+        ],
+        "api_key": [
+          {
+            "current_key": "AIzaSyBZO0OXIyz7ARYStS8Uba8nDeoTFvc-tJc"
+          }
+        ],
+        "services": {
+          "appinvite_service": {
+            "other_platform_oauth_client": [
+              {
+                "client_id": "701544173838-hhqdctk26p0tt1eeog5unm25ep0f2ia2.apps.googleusercontent.com",
+                "client_type": 3
+              }
+            ]
+          }
+        }
+      }
+    ],
+    "configuration_version": "1"
+  }

@@ -16,8 +16,8 @@ class RegisterPage extends StatefulWidget {
   State<RegisterPage> createState() => RegisterPageState();
 }
 
-// This enum has the valid genders for the app
-enum Gender { male, femme, noBinary }
+// This enum has the valid genres for the app
+enum Genre { male, femme, noBinary }
 
 // Register state
 class RegisterPageState extends State<RegisterPage> {
@@ -29,11 +29,11 @@ class RegisterPageState extends State<RegisterPage> {
   final _repeatPassword = TextEditingController();
   final TextEditingController _date = TextEditingController();
 
-  // Declare and define a default value for the gender property
+  // Declare and define a default value for the genre property
   final _data = "Información: ";
-  Gender? _gender = Gender.male;
+  Genre? _genre = Genre.male;
 
-  String genderBooks = '';
+  String genreBooks = '';
 
   // Pleasures or likes travel topics
   bool _culture = false;
@@ -106,18 +106,18 @@ class RegisterPageState extends State<RegisterPage> {
   void _onRegisterButtonClicked() {
     setState(() {
       if (_password.text == _repeatPassword.text) {
-        String gender = "Masculino";
+        String genre = "Masculino";
         String favoritos = "";
-        if (_gender == Gender.femme) {
-          gender = "Femenino";
-        } else if (_gender == Gender.noBinary) {
-          gender = "no binario";
+        if (_genre == Genre.femme) {
+          genre = "Femenino";
+        } else if (_genre == Genre.noBinary) {
+          genre = "no binario";
         }
         if (_gastronomy) favoritos = "$favoritos Gastronomia";
         if (_culture) favoritos = "$favoritos Cultura";
         if (_extremeAdventures) favoritos = "$favoritos Aventuras Extremas";
         if (_relaxation) favoritos = "$favoritos Descanso";
-        var user = User("", _name.text, _email.text, _password.text, gender,
+        var user = User("", _name.text, _email.text, _password.text, genre,
             _date, favoritos);
         _registerUser(user);
       } else {
@@ -180,9 +180,9 @@ class RegisterPageState extends State<RegisterPage> {
               const Text("Sexo:",
                   textAlign: TextAlign.center,
                   style: TextStyle(fontSize: 16, fontStyle: FontStyle.italic)),
-              _createRadio('Femenino', Gender.femme),
-              _createRadio('Masculino', Gender.male),
-              _createRadio('No binario', Gender.noBinary),
+              _createRadio('Femenino', Genre.femme),
+              _createRadio('Masculino', Genre.male),
+              _createRadio('No binario', Genre.noBinary),
               const SizedBox(height: 32),
               const Divider(),
 
@@ -255,13 +255,13 @@ class RegisterPageState extends State<RegisterPage> {
   }
 
   // This method returns an radio button
-  Widget _createRadio(String title, Gender value) {
+  Widget _createRadio(String title, Genre value) {
     return ListTile(
       title: Text(title),
-      leading: Radio<Gender>(
+      leading: Radio<Genre>(
         value: value,
-        groupValue: _gender,
-        onChanged: ((Gender? option) => setState(() => _gender = option)),
+        groupValue: _genre,
+        onChanged: ((Genre? option) => setState(() => _genre = option)),
       ),
     );
   }
@@ -278,13 +278,13 @@ class RegisterPageState extends State<RegisterPage> {
     ));
   }
 
-  /*  if (_extremeAdventures) genderBooks += 'Aventuras extremas';
-    if (_culture) genderBooks += ', cultura';
-    if (_gastronomy) genderBooks += ', gastronomía';
-    if (_relaxation) genderBooks += ', descanso';
+  /*  if (_extremeAdventures) genreBooks += 'Aventuras extremas';
+    if (_culture) genreBooks += ', cultura';
+    if (_gastronomy) genreBooks += ', gastronomía';
+    if (_relaxation) genreBooks += ', descanso';
 
-    User user = User(_name.text, _email.text, _password.text, gender,
-        _date.text, genderBooks);
+    User user = User(_name.text, _email.text, _password.text, genre,
+        _date.text, genreBooks);
 
     _savePreferences(user);
 

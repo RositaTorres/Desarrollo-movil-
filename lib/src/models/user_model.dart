@@ -26,7 +26,7 @@ class User {
         _favoritesGenres = json['favoritesGenres'];
 
   // Methods
-  Map<String, String> toJson() => {
+  Map<String, dynamic> toJson() => {
         'uid': _uid,
         'name': _name,
         'email': _email,

@@ -13,14 +13,14 @@ class RegisterPage extends StatefulWidget {
   const RegisterPage({super.key});
 
   @override
-  State<RegisterPage> createState() => RegisterPageState();
+  State<RegisterPage> createState() => _RegisterPageState();
 }
 
 // This enum has the valid genres for the app
 enum Genre { male, femme, noBinary }
 
 // Register state
-class RegisterPageState extends State<RegisterPage> {
+class _RegisterPageState extends State<RegisterPage> {
   // Inputs controllers
   final FirebaseApi _firebaseApi = FirebaseApi();
   final _name = TextEditingController();
@@ -32,8 +32,6 @@ class RegisterPageState extends State<RegisterPage> {
   // Declare and define a default value for the genre property
   final _data = "Información: ";
   Genre? _genre = Genre.male;
-
-  String genreBooks = '';
 
   // Pleasures or likes travel topics
   bool _culture = false;
@@ -282,12 +280,9 @@ class RegisterPageState extends State<RegisterPage> {
     if (_culture) genreBooks += ', cultura';
     if (_gastronomy) genreBooks += ', gastronomía';
     if (_relaxation) genreBooks += ', descanso';
-
     User user = User(_name.text, _email.text, _password.text, genre,
         _date.text, genreBooks);
-
     _savePreferences(user);
-
     Navigator.pushNamed(context, 'login');
   }*/
 }

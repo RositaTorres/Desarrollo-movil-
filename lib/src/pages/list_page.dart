@@ -1,5 +1,7 @@
 // Imports
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/src/pages/login_page.dart';
 
 class ListPage extends StatefulWidget {
   const ListPage({super.key});
@@ -8,25 +10,39 @@ class ListPage extends StatefulWidget {
   State<ListPage> createState() => _ListPageState();
 }
 
+enum Menu { logOut }
+
 class _ListPageState extends State<ListPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text('Sitios Turisticos'),
+        centerTitle: true,
+        actions: [
+          PopupMenuButton(
+              onSelected: (Menu item) {
+                setState(() {
+                  if (item == Menu.logOut) {
+                    FirebaseAuth.instance.signOut();
+                    Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const LoginPage(),
+                        ));
+                  }
+                });
+              },
+              itemBuilder: (BuildContext context) => <PopupMenuEntry<Menu>>[
+                    const PopupMenuItem(
+                      value: Menu.logOut,
+                      child: Text('Cerrar Sesión'),
+                    )
+                  ])
+        ],
+      ),
       body: Column(
         children: [
-          Container(
-            color: Colors.purple,
-            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 15),
-            child: const ListTile(
-              title: Text(
-                'Sitios Turisticos',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white,
-                ),
-              ),
-            ),
-          ),
           Expanded(
             child: ListView(
               children: <Widget>[

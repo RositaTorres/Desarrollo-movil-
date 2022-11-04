@@ -16,7 +16,7 @@ class _ListPageState extends State<ListPage> {
         children: [
           Container(
             color: Colors.purple,
-            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
+            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 15),
             child: const ListTile(
               title: Text(
                 'Sitios Turisticos',

@@ -11,8 +11,9 @@ class _InfoGeneral8State extends State<InfoGeneral8> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(),
       body: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 60),
+          padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
           child: SingleChildScrollView(
               child: Column(
             mainAxisAlignment: MainAxisAlignment.start,

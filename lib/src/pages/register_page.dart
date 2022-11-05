@@ -1,12 +1,9 @@
-// Imports
-// ignore_for_file: unused_field, unused_local_variable, use_build_context_synchronously
-
 import 'package:flutter/material.dart';
-//import 'package:flutter_application_1/src/styles/buttons_style.dart';
 import 'package:flutter_application_1/repository/firebase_api.dart';
-import '../models/user_model.dart';
-import 'login_page.dart';
 import 'package:intl/intl.dart';
+import '../models/user_model.dart';
+import '../styles/buttons_style.dart';
+import 'login_page.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({Key? key}) : super(key: key);
@@ -19,7 +16,6 @@ enum Genre { masculino, femenino }
 
 class _RegisterPageState extends State<RegisterPage> {
   final FirebaseApi _firebaseApi = FirebaseApi();
-
   final _name = TextEditingController();
   final _email = TextEditingController();
   final _password = TextEditingController();
@@ -136,9 +132,12 @@ class _RegisterPageState extends State<RegisterPage> {
                 ),
                 TextFormField(
                   controller: _name,
-                  decoration: const InputDecoration(
-                      border: OutlineInputBorder(),
-                      labelText: 'Nombre y Apellido'),
+                  decoration: InputDecoration(
+                    label: const Text('Nombre y apellido'),
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(20)),
+                    icon: const Icon(Icons.account_circle),
+                  ),
                   keyboardType: TextInputType.text,
                 ),
                 const SizedBox(
@@ -146,17 +145,25 @@ class _RegisterPageState extends State<RegisterPage> {
                 ),
                 TextFormField(
                   controller: _email,
-                  decoration: const InputDecoration(
-                      border: OutlineInputBorder(), labelText: 'Email'),
-                  keyboardType: TextInputType.text,
+                  decoration: InputDecoration(
+                    label: const Text('Correo electrónico'),
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(20)),
+                    icon: const Icon(Icons.alternate_email_outlined),
+                  ),
+                  keyboardType: TextInputType.emailAddress,
                 ),
                 const SizedBox(
                   height: 16.0,
                 ),
                 TextFormField(
                   controller: _password,
-                  decoration: const InputDecoration(
-                      border: OutlineInputBorder(), labelText: 'Contraseña'),
+                  decoration: InputDecoration(
+                    label: const Text('Contraseña'),
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(20)),
+                    icon: const Icon(Icons.stream_sharp),
+                  ),
                   keyboardType: TextInputType.text,
                 ),
                 const SizedBox(
@@ -164,75 +171,53 @@ class _RegisterPageState extends State<RegisterPage> {
                 ),
                 TextFormField(
                   controller: _repassword,
-                  decoration: const InputDecoration(
-                      border: OutlineInputBorder(),
-                      labelText: 'Confirmar Contraseña'),
+                  decoration: InputDecoration(
+                    label: const Text('Repetir contraseña'),
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(20)),
+                    icon: const Icon(Icons.stream_sharp),
+                  ),
                   keyboardType: TextInputType.text,
                 ),
-                Row(
-                  children: [
-                    Expanded(
-                      child: ListTile(
-                        title: const Text('Masculino'),
-                        leading: Radio<Genre>(
-                            value: Genre.masculino,
-                            groupValue: _genre,
-                            onChanged: (Genre? value) {
-                              setState(() {
-                                _genre = value;
-                              });
-                            }),
-                      ),
-                    ),
-                    Expanded(
-                      child: ListTile(
-                        title: const Text('Femenino'),
-                        leading: Radio<Genre>(
-                            value: Genre.femenino,
-                            groupValue: _genre,
-                            onChanged: (Genre? value) {
-                              setState(() {
-                                _genre = value;
-                              });
-                            }),
-                      ),
-                    ),
-                  ],
-                ),
-                const Text('¿Por que te gusta viajar?',
-                    style: TextStyle(fontSize: 20)),
+                // Sex select radios
+                const SizedBox(height: 32),
+                const Text("Sexo:",
+                    textAlign: TextAlign.center,
+                    style:
+                        TextStyle(fontSize: 16, fontStyle: FontStyle.italic)),
+                _createRadio('Femenino', Genre.femenino),
+                _createRadio('Masculino', Genre.masculino),
+
+                // Activities checkboxes
+                const SizedBox(height: 32),
+                const Text("¿Por qué te gusta viajar?",
+                    textAlign: TextAlign.center,
+                    style:
+                        TextStyle(fontSize: 16, fontStyle: FontStyle.italic)),
+
                 CheckboxListTile(
-                  title: const Text('Gastronomia'),
-                  value: _gastronomia,
-                  selected: _gastronomia,
-                  onChanged: (bool? value) {
-                    _gastronomia = value!;
-                  },
-                ),
+                    title: const Text('Aventuras extremas'),
+                    value: _aventurasExtremas,
+                    onChanged: (bool? selected) =>
+                        setState(() => _aventurasExtremas = selected!)),
                 CheckboxListTile(
-                  title: const Text('Cultura'),
-                  value: _cultura,
-                  selected: _cultura,
-                  onChanged: (bool? value) {
-                    _cultura = value!;
-                  },
-                ),
+                    title: const Text('Cultura'),
+                    value: _cultura,
+                    onChanged: (bool? selected) =>
+                        setState(() => _cultura = selected!)),
                 CheckboxListTile(
-                  title: const Text('Aventuras Extremas'),
-                  value: _aventurasExtremas,
-                  selected: _aventurasExtremas,
-                  onChanged: (bool? value) {
-                    _aventurasExtremas = value!;
-                  },
-                ),
+                    title: const Text('Descanso'),
+                    value: _descanso,
+                    onChanged: (bool? selected) =>
+                        setState(() => _descanso = selected!)),
                 CheckboxListTile(
-                  title: const Text('Descanso'),
-                  value: _descanso,
-                  selected: _descanso,
-                  onChanged: (bool? value) {
-                    _descanso = value!;
-                  },
-                ),
+                    title: const Text('Gastronomía'),
+                    value: _gastronomia,
+                    onChanged: (bool? selected) =>
+                        setState(() => _gastronomia = selected!)),
+                const SizedBox(height: 32),
+                const Divider(),
+
                 ElevatedButton(
                   style: TextButton.styleFrom(
                     textStyle: const TextStyle(fontSize: 16),
@@ -243,18 +228,32 @@ class _RegisterPageState extends State<RegisterPage> {
                   child: Text(buttonMsg),
                 ),
                 ElevatedButton(
-                  style: TextButton.styleFrom(
-                    textStyle: const TextStyle(fontSize: 16),
-                  ),
-                  onPressed: () {
-                    _onRegisterButtonClicked();
-                  },
-                  child: const Text("Registrar"),
+                    onPressed: _onRegisterButtonClicked,
+                    style: getTextButtonPrimaryStyle(),
+                    child: const Text('Registro')),
+                TextButton(
+                  child: const Text('Iniciar sesión',
+                      style:
+                          TextStyle(fontStyle: FontStyle.italic, fontSize: 16)),
+                  onPressed: () => Navigator.pushNamed(context, 'login'),
                 ),
+                const SizedBox(height: 32)
               ],
             ),
           ),
         ),
+      ),
+    );
+  }
+
+  //This method returns an radio button
+  Widget _createRadio(String title, Genre value) {
+    return ListTile(
+      title: Text(title),
+      leading: Radio<Genre>(
+        value: value,
+        groupValue: _genre,
+        onChanged: ((Genre? option) => setState(() => _genre = option)),
       ),
     );
   }

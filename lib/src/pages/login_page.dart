@@ -134,12 +134,14 @@ class _LoginPageState extends State<LoginPage> {
         msg = "El correo electrónico está mal escrito";
       } else if (result == "wrong-password") {
         msg = "Correo o contraseña incorrecta";
+      } else if (result == "user-not-found") {
+        msg = "Usuario no registrado";
       } else if (result == "network-request-failed") {
         msg = "Revise la conexion a internet";
       } else {
         msg = "Bienvenido";
       }
-      _showMsg("Correo o contraseña incorrecto");
+      //_showMsg("Bienvenido");
       // ignore: use_build_context_synchronously
       Navigator.pushReplacement(
           context, MaterialPageRoute(builder: (context) => const ListPage()));

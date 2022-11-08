@@ -4,10 +4,6 @@ import 'package:flutter_application_1/src/styles/buttons_style.dart';
 import 'package:flutter_application_1/repository/firebase_api.dart';
 import '../models/user_model.dart';
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 689b15b3612f0a78834898b37b1f60916fd4dab9
 // Register widget (This widget has a variable state)
 class RegisterPage extends StatefulWidget {
   const RegisterPage({super.key});
@@ -40,7 +36,6 @@ class _RegisterPageState extends State<RegisterPage> {
   bool _relaxation = false;
 
   // This method saves the information into firebase
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -204,7 +199,6 @@ class _RegisterPageState extends State<RegisterPage> {
       helpText: "Fecha de nacimiento",
     );
     setState(() => {
-<<<<<<< HEAD
           if (newDate != null)
             {
               _date.text = newDate.toString().split(' ')[0],
@@ -212,13 +206,6 @@ class _RegisterPageState extends State<RegisterPage> {
           else
             {_showMessage('Debe seleccionar una fecha')}
         });
-=======
-      if (newDate != null){
-        _date.text = newDate.toString().split(' ')[0],
-      } else
-        {_showMessage('Debe seleccionar una fecha')}
-      });
->>>>>>> 689b15b3612f0a78834898b37b1f60916fd4dab9
   }
 
   void _saveUser(User user) async {
@@ -228,10 +215,6 @@ class _RegisterPageState extends State<RegisterPage> {
 
   // This method saves the auth information into firebase
   void _registerUser(User user) async {
-<<<<<<< HEAD
-=======
-    
->>>>>>> 689b15b3612f0a78834898b37b1f60916fd4dab9
     var result = await _firebaseApi.registerUser(user.email, user.password);
     String msg = "";
     if (result == "invalid-email") {
@@ -248,38 +231,25 @@ class _RegisterPageState extends State<RegisterPage> {
       _saveUser(user);
     }
     _showMessage(msg);
-<<<<<<< HEAD
-=======
-
->>>>>>> 689b15b3612f0a78834898b37b1f60916fd4dab9
   }
 
   // This method register the user data and the redirects to the login
   void _onRegisterButtonClicked() {
     setState(() {
       if (_password.text == _repeatPassword.text) {
-<<<<<<< HEAD
-=======
-        
->>>>>>> 689b15b3612f0a78834898b37b1f60916fd4dab9
         String genre = "Femenino";
         if (_genre == Genre.male) {
           genre = "Masculino";
         } else if (_genre == Genre.noBinary) {
           genre = "No binario";
         }
-<<<<<<< HEAD
 
-=======
-        
->>>>>>> 689b15b3612f0a78834898b37b1f60916fd4dab9
         String favorites = "";
         if (_gastronomy) favorites = "Gastronomia";
         if (_culture) favorites = "$favorites, Cultura";
         if (_extremeAdventures) favorites = "$favorites, Aventuras Extremas";
         if (_relaxation) favorites = "$favorites, Descanso";
         User user = User("", _name.text, _email.text, _password.text, genre,
-<<<<<<< HEAD
             _date.text, favorites);
         _registerUser(user);
       } else {
@@ -287,16 +257,4 @@ class _RegisterPageState extends State<RegisterPage> {
       }
     });
   }
-=======
-          _date.text, favorites);
-        _registerUser(user);
-
-      } else {
-        _showMessage("Las contraseñas no coinciden");
-      }
-
-    });
-  }
-  
->>>>>>> 689b15b3612f0a78834898b37b1f60916fd4dab9
 }

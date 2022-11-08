@@ -140,11 +140,11 @@ class _LoginPageState extends State<LoginPage> {
         msg = "Revise la conexion a internet";
       } else {
         msg = "Bienvenido";
+        _showMsg(msg);
+        // ignore: use_build_context_synchronously
+        Navigator.pushReplacement(
+            context, MaterialPageRoute(builder: (context) => const ListPage()));
       }
-      //_showMsg("Bienvenido");
-      // ignore: use_build_context_synchronously
-      Navigator.pushReplacement(
-          context, MaterialPageRoute(builder: (context) => const ListPage()));
     }
   }
 }

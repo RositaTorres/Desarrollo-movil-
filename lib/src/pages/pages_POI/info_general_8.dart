@@ -28,18 +28,12 @@ class _InfoGeneral8State extends State<InfoGeneral8> {
               const SizedBox(height: 30.0),
               const Image(
                   image: AssetImage('assets/images/parque_del_agua.jpg')),
-              const SizedBox(height: 45.0),
-              const Text(
-                'Ubicación: Bucaramanga - Santander \nCoordenadas: 7°07′52.89′′N 73°06′35.1′′O \nTemperatura: Alta 26º C, Baja 18º C \n\nEs uno de los sitios de encuentro más importantes de Bucaramanga, amplio sector rodeado de naturaleza alrededor del tema del agua, donde hay presentaciones artísticas y culturales, variada oferta gastronómica y shows todas las noches ideales para compartir en familia. Es la sede del Acueducto Metropolitano de Bucaramanga y en sus terrenos se encuentran los tanques de almacenamiento de la Planta Morrorico que era uno de los sitios de recreación del siglo pasado.',
-                style: TextStyle(fontSize: 17, fontStyle: FontStyle.normal),
-              ),
-              const SizedBox(height: 15.0),
               Row(
                 children: [
                   Expanded(
                     child: IconButton(
                       alignment: Alignment.centerRight,
-                      icon: const Icon(Icons.favorite_border, size: 40.0),
+                      icon: const Icon(Icons.favorite_border, size: 30.0),
                       color: Colors.red,
                       onPressed: (() {
                         _onFavouritesButtonClicked();
@@ -47,6 +41,10 @@ class _InfoGeneral8State extends State<InfoGeneral8> {
                     ),
                   ),
                 ],
+              ),
+              const Text(
+                'Ubicación: Bucaramanga - Santander \nCoordenadas: 7°07′52.89′′N 73°06′35.1′′O \nTemperatura: Alta 26º C, Baja 18º C \n\nEs uno de los sitios de encuentro más importantes de Bucaramanga, amplio sector rodeado de naturaleza alrededor del tema del agua, donde hay presentaciones artísticas y culturales, variada oferta gastronómica y shows todas las noches ideales para compartir en familia. Es la sede del Acueducto Metropolitano de Bucaramanga y en sus terrenos se encuentran los tanques de almacenamiento de la Planta Morrorico que era uno de los sitios de recreación del siglo pasado.',
+                style: TextStyle(fontSize: 17, fontStyle: FontStyle.normal),
               ),
             ],
           ))),

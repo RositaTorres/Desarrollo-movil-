@@ -29,18 +29,12 @@ class _InfoGeneral5State extends State<InfoGeneral5> {
               const Image(
                   image: AssetImage(
                       'assets/images/Parque_Ecológico_El_Portal.jpg')),
-              const SizedBox(height: 45.0),
-              const Text(
-                'Ubicación: Rionegro - Santander \nCoordenadas: 7°19′54.51′′N 73°09′47.77′′O \nTemperatura: 28º C \n\nEs un sitio para la recreación y el descanso, cuenta con aguas cristalinas, piscina natural y circulante, vegetación exuberante, cascada natural de 12 metros de altura, múltiples chorros de agua para hidromasaje, pozos naturales, y más atractivos para visitantes como espacios para camping, hospedaje, pesca deportiva, ciclomontañismo, equitación, spa, senderos ecológicos, Juegos infantiles, bar, bolos, minitejo, moliendas didácticas y polideportivo.',
-                style: TextStyle(fontSize: 17, fontStyle: FontStyle.normal),
-              ),
-              const SizedBox(height: 15.0),
               Row(
                 children: [
                   Expanded(
                     child: IconButton(
                       alignment: Alignment.centerRight,
-                      icon: const Icon(Icons.favorite_border, size: 40.0),
+                      icon: const Icon(Icons.favorite_border, size: 30.0),
                       color: Colors.red,
                       onPressed: (() {
                         _onFavouritesButtonClicked();
@@ -48,6 +42,10 @@ class _InfoGeneral5State extends State<InfoGeneral5> {
                     ),
                   ),
                 ],
+              ),
+              const Text(
+                'Ubicación: Rionegro - Santander \nCoordenadas: 7°19′54.51′′N 73°09′47.77′′O \nTemperatura: 28º C \n\nEs un sitio para la recreación y el descanso, cuenta con aguas cristalinas, piscina natural y circulante, vegetación exuberante, cascada natural de 12 metros de altura, múltiples chorros de agua para hidromasaje, pozos naturales, y más atractivos para visitantes como espacios para camping, hospedaje, pesca deportiva, ciclomontañismo, equitación, spa, senderos ecológicos, Juegos infantiles, bar, bolos, minitejo, moliendas didácticas y polideportivo.',
+                style: TextStyle(fontSize: 17, fontStyle: FontStyle.normal),
               ),
             ],
           ))),

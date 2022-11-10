@@ -27,18 +27,12 @@ class _InfoGeneral6State extends State<InfoGeneral6> {
               ),
               const SizedBox(height: 30.0),
               const Image(image: AssetImage('assets/images/el_malecon.jpg')),
-              const SizedBox(height: 45.0),
-              const Text(
-                'Ubicación: Girón - Santander \nCoordenadas: 7°03′55.29′′N 73°10′11.89′′O \nTemperatura: Alta 24º C, Baja 17º C \n\nSitio emblemático de la región y turístico por excelencia, muy famoso por sus festivales de orquestas, sus ventas artesanales, sus tradicionales casetas, sus comidas típicas y sus conocidas fritangas donde sobresale la venta de carne de vaca, chorizos, carne de cerdo, carne de cabro y papa. Se destaca por sus atracciones naturales y su vista hacia el imponente Rio de Oro.',
-                style: TextStyle(fontSize: 17, fontStyle: FontStyle.normal),
-              ),
-              const SizedBox(height: 15.0),
               Row(
                 children: [
                   Expanded(
                     child: IconButton(
                       alignment: Alignment.centerRight,
-                      icon: const Icon(Icons.favorite_border, size: 40.0),
+                      icon: const Icon(Icons.favorite_border, size: 30.0),
                       color: Colors.red,
                       onPressed: (() {
                         _onFavouritesButtonClicked();
@@ -46,6 +40,10 @@ class _InfoGeneral6State extends State<InfoGeneral6> {
                     ),
                   ),
                 ],
+              ),
+              const Text(
+                'Ubicación: Girón - Santander \nCoordenadas: 7°03′55.29′′N 73°10′11.89′′O \nTemperatura: Alta 24º C, Baja 17º C \n\nSitio emblemático de la región y turístico por excelencia, muy famoso por sus festivales de orquestas, sus ventas artesanales, sus tradicionales casetas, sus comidas típicas y sus conocidas fritangas donde sobresale la venta de carne de vaca, chorizos, carne de cerdo, carne de cabro y papa. Se destaca por sus atracciones naturales y su vista hacia el imponente Rio de Oro.',
+                style: TextStyle(fontSize: 17, fontStyle: FontStyle.normal),
               ),
             ],
           ))),

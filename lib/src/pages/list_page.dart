@@ -1,4 +1,6 @@
 // Imports
+// ignore_for_file: unused_import
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/src/pages/login_page.dart';
@@ -16,31 +18,6 @@ class _ListPageState extends State<ListPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Sitios Turisticos'),
-        centerTitle: true,
-        actions: [
-          PopupMenuButton(
-              onSelected: (Menu item) {
-                setState(() {
-                  if (item == Menu.logOut) {
-                    FirebaseAuth.instance.signOut();
-                    Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const LoginPage(),
-                        ));
-                  }
-                });
-              },
-              itemBuilder: (BuildContext context) => <PopupMenuEntry<Menu>>[
-                    const PopupMenuItem(
-                      value: Menu.logOut,
-                      child: Text('Cerrar Sesión'),
-                    )
-                  ])
-        ],
-      ),
       body: Column(
         children: [
           Expanded(
@@ -218,13 +195,6 @@ class _ListPageState extends State<ListPage> {
           ),
           const SizedBox(
             height: 16.0,
-          ),
-          ElevatedButton(
-            style: TextButton.styleFrom(
-              textStyle: const TextStyle(fontSize: 16),
-            ),
-            onPressed: () => Navigator.pushNamed(context, 'list'),
-            child: const Text('Ir a favoritos'),
           ),
         ],
       ),

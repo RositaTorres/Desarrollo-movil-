@@ -1,4 +1,6 @@
 // Imports
+// ignore_for_file: unused_local_variable, use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/src/styles/buttons_style.dart';
 import 'package:flutter_application_1/repository/firebase_api.dart';

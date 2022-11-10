@@ -1,4 +1,6 @@
 // Imports
+// ignore_for_file: unused_import
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/src/pages/login_page.dart';

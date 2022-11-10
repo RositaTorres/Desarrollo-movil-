@@ -2,6 +2,7 @@
 // ignore_for_file: unused_import, unused_element, unused_local_variable
 
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/src/pages/home_page.dart';
 import 'package:flutter_application_1/src/pages/pages_POI/info_general.dart';
 import 'package:flutter_application_1/src/pages/pages_POI/info_general_2.dart';
 import 'package:flutter_application_1/src/pages/pages_POI/info_general_3.dart';
@@ -143,7 +144,7 @@ class _LoginPageState extends State<LoginPage> {
         _showMsg(msg);
         // ignore: use_build_context_synchronously
         Navigator.pushReplacement(
-            context, MaterialPageRoute(builder: (context) => const ListPage()));
+            context, MaterialPageRoute(builder: (context) => const HomePage()));
       }
     }
   }

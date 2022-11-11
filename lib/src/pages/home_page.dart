@@ -23,7 +23,7 @@ class _HomePageState extends State<HomePage> {
 
   void _loadPages() {
     pages = [];
-    pages.add(const ListPage());
+    //pages.add(const ListPage());
     pages.add(const FavouritePage());
   }
 

@@ -9,11 +9,13 @@ class ListPage extends StatefulWidget {
   State<ListPage> createState() => _ListPageState();
 }
 
+enum Menu { logOut }
+
 class _ListPageState extends State<ListPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: myAppbar(), drawer: Menu(context), body: placesBody());
+        appBar: myAppbar(), /*drawer: Menu(context),*/ body: placesBody());
   }
 
   myAppbar() {

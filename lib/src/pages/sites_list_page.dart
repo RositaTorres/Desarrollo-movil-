@@ -1,6 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:accordion/accordion.dart';
+import 'package:flutter_application_1/src/models/local_favourite.dart';
+
+import '../../boxes.dart';
 
 // ignore: must_be_immutable
 class SitesListPage extends StatefulWidget {
@@ -19,6 +22,44 @@ class _SitesListPage extends State<SitesListPage> {
       body: placeBody(),
       //drawer: Menu(context),
     );
+  }
+
+  var isFavourite = false;
+
+  @override
+  void initState() {
+    _getLocalFavourite();
+    super.initState();
+  }
+
+  void _getLocalFavourite() {
+    final box = Boxes.getFavouritesBox();
+    box.values.forEach((element) {
+      if (element.id == widget.site.id) {
+        isFavourite = true;
+      }
+    });
+  }
+
+  void _onFavouritesButtonClicked() async {
+    var localFavourite = LocalFavourite()
+      ..id = widget.site.id
+      ..ciudad = widget.site['Ciudad']
+      ..departamento = widget.site['Departamento']
+      ..description = widget.site['Descripción']
+      ..nombre = widget.site['Nombre']
+      ..Url_imagen = widget.site["Url_imagen"];
+
+    final box = Boxes.getFavouritesBox();
+    if (isFavourite) {
+      box.delete(localFavourite.id);
+    } else {
+      box.put(localFavourite.id, localFavourite);
+    }
+
+    setState(() {
+      isFavourite = !isFavourite;
+    });
   }
 
   myAppbar() {
@@ -42,10 +83,10 @@ class _SitesListPage extends State<SitesListPage> {
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: FadeInImage(
-              fadeInDuration: const Duration(seconds: 3),
+              fadeInDuration: const Duration(seconds: 1),
               placeholder: const NetworkImage(
                   'https://acegif.com/wp-content/uploads/loading-11.gif'),
-              image: NetworkImage(widget.site['Url_imagen'])),
+              image: NetworkImage(widget.site["Url_imagen"])),
         ),
         const SizedBox(
           height: 25,
@@ -90,6 +131,21 @@ class _SitesListPage extends State<SitesListPage> {
                   ),
                   content: Text(widget.site['Departamento'])),
             ]),
+        Row(
+          children: [
+            Expanded(
+              child: IconButton(
+                alignment: Alignment.center,
+                icon: Icon(isFavourite ? Icons.favorite : Icons.favorite_border,
+                    size: 30.0),
+                color: Colors.red,
+                onPressed: (() {
+                  _onFavouritesButtonClicked();
+                }),
+              ),
+            ),
+          ],
+        ),
         const SizedBox(
           height: 15,
         ),

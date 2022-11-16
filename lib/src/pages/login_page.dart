@@ -1,6 +1,7 @@
 // Imports
 // ignore_for_file: unused_import, unused_element, unused_local_variable
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/src/pages/home_page.dart';
 import 'package:flutter_application_1/src/pages/pages_POI/info_general.dart';
@@ -22,7 +23,6 @@ import 'list_page.dart';
 // Login widget (This widget has a variable state)
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
-
   @override
   State<LoginPage> createState() => _LoginPageState();
 }

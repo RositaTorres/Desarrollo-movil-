@@ -8,11 +8,17 @@ class LocalFavourite extends HiveObject {
   String? id;
 
   @HiveField(1)
-  String? name;
+  String? ciudad;
 
   @HiveField(2)
-  String? imageLink;
+  String? departamento;
 
   @HiveField(3)
   String? description;
+
+  @HiveField(4)
+  String? nombre;
+
+  @HiveField(5)
+  String? Url_imagen;
 }

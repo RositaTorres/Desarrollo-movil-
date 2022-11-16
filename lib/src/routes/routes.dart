@@ -1,4 +1,5 @@
 // There's importing the pages
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/src/pages/list_page.dart';
 import 'package:flutter_application_1/src/pages/login_page.dart';
@@ -13,7 +14,6 @@ import 'package:flutter_application_1/src/pages/pages_POI/info_general_6.dart';
 import 'package:flutter_application_1/src/pages/pages_POI/info_general_7.dart';
 import 'package:flutter_application_1/src/pages/pages_POI/info_general_8.dart';
 import 'package:flutter_application_1/src/pages/pages_POI/info_general_9.dart';
-import 'package:flutter_application_1/src/pages/favourite_page.dart';
 
 // This function returns a map with the routes and pages
 Map<String, WidgetBuilder> getRoutes() => {
@@ -30,5 +30,4 @@ Map<String, WidgetBuilder> getRoutes() => {
       'InfoGeneral7': (context) => const InfoGeneral7(),
       'InfoGeneral8': (context) => const InfoGeneral8(),
       'InfoGeneral9': (context) => const InfoGeneral9(),
-      'FavouritePage': (context) => const FavouritePage()
     };

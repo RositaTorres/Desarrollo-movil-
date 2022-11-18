@@ -2,19 +2,24 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:accordion/accordion.dart';
 import 'package:flutter_application_1/src/models/local_favourite.dart';
+import 'package:flutter_application_1/src/pages/map_page.dart';
 
 import '../../boxes.dart';
 
 // ignore: must_be_immutable
 class SitesListPage extends StatefulWidget {
-  late QueryDocumentSnapshot site;
+  var site;
   SitesListPage(this.site, {super.key});
 
   @override
-  State<SitesListPage> createState() => _SitesListPage();
+  State<SitesListPage> createState() => _SitesListPageState(site);
 }
 
-class _SitesListPage extends State<SitesListPage> {
+class _SitesListPageState extends State<SitesListPage> {
+  var site;
+
+  _SitesListPageState(this.site);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,7 +40,7 @@ class _SitesListPage extends State<SitesListPage> {
   void _getLocalFavourite() {
     final box = Boxes.getFavouritesBox();
     box.values.forEach((element) {
-      if (element.id == widget.site.id) {
+      if (element.id == site.id) {
         isFavourite = true;
       }
     });
@@ -43,12 +48,12 @@ class _SitesListPage extends State<SitesListPage> {
 
   void _onFavouritesButtonClicked() async {
     var localFavourite = LocalFavourite()
-      ..id = widget.site.id
-      ..ciudad = widget.site['Ciudad']
-      ..departamento = widget.site['Departamento']
-      ..description = widget.site['Descripción']
-      ..nombre = widget.site['Nombre']
-      ..Url_imagen = widget.site["Url_imagen"];
+      ..id = site.id
+      ..ciudad = site['Ciudad']
+      ..departamento = site['Departamento']
+      ..description = site['Descripción']
+      ..nombre = site['Nombre']
+      ..Url_imagen = site["Url_imagen"];
 
     final box = Boxes.getFavouritesBox();
     if (isFavourite) {
@@ -86,7 +91,7 @@ class _SitesListPage extends State<SitesListPage> {
               fadeInDuration: const Duration(seconds: 1),
               placeholder: const NetworkImage(
                   'https://acegif.com/wp-content/uploads/loading-11.gif'),
-              image: NetworkImage(widget.site["Url_imagen"])),
+              image: NetworkImage(site["Url_imagen"])),
         ),
         const SizedBox(
           height: 25,
@@ -111,25 +116,25 @@ class _SitesListPage extends State<SitesListPage> {
                     'Destino',
                     style: TextStyle(fontSize: 18, color: Colors.white),
                   ),
-                  content: Text(widget.site['Nombre'])),
+                  content: Text(site['Nombre'])),
               AccordionSection(
                   header: const Text(
                     'Descripción',
                     style: TextStyle(fontSize: 18, color: Colors.white),
                   ),
-                  content: Text(widget.site['Descripción'])),
+                  content: Text(site['Descripción'])),
               AccordionSection(
                   header: const Text(
                     'Ciudad',
                     style: TextStyle(fontSize: 18, color: Colors.white),
                   ),
-                  content: Text(widget.site['Ciudad'])),
+                  content: Text(site['Ciudad'])),
               AccordionSection(
                   header: const Text(
                     'Departamento',
                     style: TextStyle(fontSize: 18, color: Colors.white),
                   ),
-                  content: Text(widget.site['Departamento'])),
+                  content: Text(site['Departamento'])),
             ]),
         Row(
           children: [
@@ -150,7 +155,10 @@ class _SitesListPage extends State<SitesListPage> {
           height: 15,
         ),
         TextButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => MapPage(site)));
+            },
             child: const Text(
               'Ver en Google Maps',
               style: TextStyle(fontSize: 18, color: Colors.black),

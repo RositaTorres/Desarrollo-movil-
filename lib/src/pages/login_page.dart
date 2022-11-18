@@ -133,13 +133,13 @@ class _LoginPageState extends State<LoginPage> {
       var result = await _firebaseApi.logInUser(_email.text, _password.text);
       String msg = "";
       if (result == "invalid-email") {
-        msg = "El correo electrónico está mal escrito";
+        _showMsg("El correo electrónico está mal escrito");
       } else if (result == "wrong-password") {
-        msg = "Correo o contraseña incorrecta";
+        _showMsg("Correo o contraseña incorrecta");
       } else if (result == "user-not-found") {
-        msg = "Usuario no registrado";
+        _showMsg("Usuario no registrado");
       } else if (result == "network-request-failed") {
-        msg = "Revise la conexion a internet";
+        _showMsg("Revise la conexión a internet");
       } else {
         msg = "Bienvenido";
         _showMsg(msg);

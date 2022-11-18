@@ -7,6 +7,7 @@ import 'package:flutter_application_1/src/models/local_favourite.dart';
 import 'package:flutter_application_1/src/pages/favourite_page.dart';
 import 'package:flutter_application_1/src/pages/list_page.dart';
 import 'package:flutter_application_1/src/pages/login_page.dart';
+import 'package:flutter_application_1/src/pages/pages_POI/info_general.dart';
 import 'package:flutter_application_1/src/pages/sites_list_page.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 

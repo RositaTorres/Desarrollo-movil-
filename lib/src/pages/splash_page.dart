@@ -1,6 +1,7 @@
 // Imports
 // ignore_for_file: unused_import
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/src/pages/login_page.dart';
@@ -9,7 +10,7 @@ import 'list_page.dart';
 
 // Splash widget (This widget has a variable state)
 class SplashPage extends StatefulWidget {
-  const SplashPage({Key? key}) : super(key: key);
+  const SplashPage({super.key});
 
   @override
   State<SplashPage> createState() => _SplashPageState();
@@ -26,7 +27,8 @@ class _SplashPageState extends State<SplashPage> {
   // There's finalizing the splash render and then, it's redirecting to the login
   Future<void> _closeSplash() async {
     Future.delayed(const Duration(seconds: 2), () async {
-      Navigator.pushReplacementNamed(context, 'login');
+      Navigator.pushReplacement(
+          context, MaterialPageRoute(builder: (context) => const LoginPage()));
       //var currentUser = FirebaseAuth.instance.currentUser;
       //if (currentUser == null) {
       //  Navigator.pushReplacement(context,

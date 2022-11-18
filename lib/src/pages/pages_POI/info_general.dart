@@ -1,11 +1,11 @@
 // ignore_for_file: unused_import
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/src/models/local_favourite.dart';
 import 'package:flutter_application_1/src/pages/list_page.dart';
 import 'package:hive/hive.dart';
-
-import '../../../boxes.dart';
+import 'package:flutter_application_1/boxes.dart';
 
 class InfoGeneral extends StatefulWidget {
   const InfoGeneral({super.key});
@@ -14,18 +14,9 @@ class InfoGeneral extends StatefulWidget {
   State<InfoGeneral> createState() => _InfoGeneralState();
 }
 
-void _onFavouritesButtonClicked() async {
-  /*var localFavourite1 = LocalFavourite()
-    ..id = widget.place.id
-    ..name = widget.place.volumeInfo?.title
-    ..imageLink = widget.place.volumeInfo?.imageLinks?.smallThumbnail
-    ..description = widget.place.volumeInfo?.description;
-
-  final box = Boxes.getFavouritesBox();
-  box.add(localFavourite1);*/
-}
-
 class _InfoGeneralState extends State<InfoGeneral> {
+  void _onFavouritesButtonClicked() async {}
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -48,7 +39,7 @@ class _InfoGeneralState extends State<InfoGeneral> {
                   Expanded(
                     child: IconButton(
                       alignment: Alignment.centerRight,
-                      icon: const Icon(Icons.favorite_border, size: 30.0),
+                      icon: const Icon(Icons.favorite, size: 30.0),
                       color: Colors.red,
                       onPressed: (() {
                         _onFavouritesButtonClicked();

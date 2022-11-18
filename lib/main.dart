@@ -1,9 +1,11 @@
 // Imports
 // ignore_for_file: unnecessary_import
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/firebase_options.dart';
 import 'package:flutter_application_1/src/models/local_favourite.dart';
+import 'package:flutter_application_1/src/pages/splash_page.dart';
 import 'package:flutter_application_1/src/routes/routes.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -20,7 +22,7 @@ Future<void> main() async {
 
   await Hive.openBox<LocalFavourite>('favourites');
 
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 // App widget

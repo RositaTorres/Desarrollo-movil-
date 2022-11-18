@@ -34,7 +34,7 @@ class _InfoGeneral3State extends State<InfoGeneral3> {
                   Expanded(
                     child: IconButton(
                       alignment: Alignment.centerRight,
-                      icon: const Icon(Icons.favorite_border, size: 30.0),
+                      icon: const Icon(Icons.favorite, size: 30.0),
                       color: Colors.red,
                       onPressed: (() {
                         _onFavouritesButtonClicked();

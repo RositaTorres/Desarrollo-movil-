@@ -22,7 +22,8 @@ import 'list_page.dart';
 
 // Login widget (This widget has a variable state)
 class LoginPage extends StatefulWidget {
-  const LoginPage({Key? key}) : super(key: key);
+  const LoginPage({super.key});
+
   @override
   State<LoginPage> createState() => _LoginPageState();
 }

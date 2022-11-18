@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/src/pages/list_page.dart';
 import 'package:flutter_application_1/src/pages/login_page.dart';
 import 'package:flutter_application_1/src/pages/register_page.dart';
+import 'package:flutter_application_1/src/pages/sites_list_page.dart';
 import 'package:flutter_application_1/src/pages/splash_page.dart';
 import 'package:flutter_application_1/src/pages/pages_POI/info_general.dart';
 import 'package:flutter_application_1/src/pages/pages_POI/info_general_2.dart';
@@ -21,7 +22,7 @@ Map<String, WidgetBuilder> getRoutes() => {
       'login': (context) => const LoginPage(),
       'register': (context) => const RegisterPage(),
       'list': (context) => const ListPage(),
-      'InfoGeneral1': (context) => const InfoGeneral(),
+      //'InfoGeneral1': (context) => const InfoGeneral(),
       'InfoGeneral2': (context) => const InfoGeneral2(),
       'InfoGeneral3': (context) => const InfoGeneral3(),
       'InfoGeneral4': (context) => const InfoGeneral4(),
@@ -30,4 +31,5 @@ Map<String, WidgetBuilder> getRoutes() => {
       'InfoGeneral7': (context) => const InfoGeneral7(),
       'InfoGeneral8': (context) => const InfoGeneral8(),
       'InfoGeneral9': (context) => const InfoGeneral9(),
+      //'SitesListPage':(context) => SitesListPage(),
     };

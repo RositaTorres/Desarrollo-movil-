@@ -14,16 +14,15 @@ enum Menu { logOut }
 class _ListPageState extends State<ListPage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: myAppbar(), /*drawer: Menu(context),*/ body: placesBody());
+    return Scaffold(appBar: myAppbar(), body: placesBody());
   }
 
   myAppbar() {
     return AppBar(
-      backgroundColor: Colors.red,
+      backgroundColor: Colors.purple,
       centerTitle: true,
       title: const Text(
-        'Lugares',
+        'Sitios Turísticos',
         style: TextStyle(color: Colors.white),
       ),
     );

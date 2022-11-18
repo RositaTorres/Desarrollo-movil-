@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/src/models/local_favourite.dart';
 import 'package:flutter_application_1/src/pages/list_page.dart';
@@ -12,11 +11,10 @@ import 'package:flutter_application_1/src/pages/pages_POI/info_general_7.dart';
 import 'package:flutter_application_1/src/pages/pages_POI/info_general_8.dart';
 import 'package:flutter_application_1/src/pages/pages_POI/info_general_9.dart';
 import 'package:hive_flutter/adapters.dart';
-import 'package:flutter_application_1/src/pages/sites_list_page.dart';
 import 'package:flutter_application_1/boxes.dart';
 
 class FavoritesPage extends StatefulWidget {
-  FavoritesPage({super.key});
+  const FavoritesPage({super.key});
 
   @override
   State<FavoritesPage> createState() => _FavoritesPageState();
@@ -26,8 +24,16 @@ class _FavoritesPageState extends State<FavoritesPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.purple,
+        centerTitle: true,
+        title: const Text(
+          'Favoritos',
+          style: TextStyle(color: Colors.white),
+        ),
+      ),
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
+        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 15),
         child: Center(
           child: _buildListView(),
         ),

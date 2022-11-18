@@ -31,7 +31,7 @@ class _HomePageState extends State<HomePage> {
   void _loadPages() {
     pages = [];
     pages.add(const ListPage());
-    pages.add(FavoritesPage());
+    pages.add(const FavoritesPage());
   }
 
   void _onItemTapped(int page) {
@@ -44,7 +44,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Sitios Turisticos'),
+        title: const Text('Destino Colombia'),
         centerTitle: true,
         actions: [
           PopupMenuButton(

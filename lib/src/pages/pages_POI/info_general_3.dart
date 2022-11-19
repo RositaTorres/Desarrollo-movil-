@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class InfoGeneral3 extends StatefulWidget {
   const InfoGeneral3({super.key});
@@ -41,6 +42,14 @@ class _InfoGeneral3State extends State<InfoGeneral3> {
                       }),
                     ),
                   ),
+                  Expanded(
+                    child: IconButton(
+                      onPressed: () {},
+                      alignment: Alignment.centerRight,
+                      icon: const Icon(FontAwesomeIcons.mapLocationDot,
+                          size: 30.0),
+                    ),
+                  )
                 ],
               ),
               const Text(

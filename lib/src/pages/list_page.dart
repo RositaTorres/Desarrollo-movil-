@@ -59,6 +59,15 @@ class _ListPageState extends State<ListPage> {
         Navigator.push(context,
             MaterialPageRoute(builder: (context) => SitesListPage(site)));
       },
+      leading: Image.network(
+        site['Url_imagen'] ?? "",
+        errorBuilder:
+            (BuildContext context, Object exception, StackTrace? stackTrace) {
+          return const Image(
+            image: AssetImage('assets/images/logo.png'),
+          );
+        },
+      ),
       trailing: const Icon(
         Icons.arrow_forward_ios,
         color: Colors.red,
